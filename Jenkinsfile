@@ -19,7 +19,7 @@ pipeline {
         steps{
           script {
               //sh "docker build -t ramktcs/phpapp-3 ."
-        app = docker.build("ramkitcs/phpapp-4")
+        app = docker.build("anantkreshnav/phpapp")
           }
       }
     }
@@ -31,7 +31,7 @@ pipeline {
           echo "Push Image on DockerHub"
           script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
-                     //sh "docker push ramkitcs/phpapp-3"
+               
             
             {            
        app.push("${env.BUILD_NUMBER}")            
@@ -48,7 +48,7 @@ pipeline {
      steps {
          echo "Run containers"
          script {
-          sh "docker run -d -p 8081:80 ramkitcs/phpapp-4"
+          sh "docker run -d -p 8081:80 anantkreshnav/phpapp"
                      }
                   }
   }          
